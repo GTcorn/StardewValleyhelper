@@ -3,39 +3,359 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>姒小姐的生活指南</title>
 <meta name="theme-color" content="#6f4a1d" />
-<title>星露谷物语 1.6 任务查询手册</title>
 <style>
-:root{--wood:#8b551e;--wood-dark:#4c2a0e;--leaf:#2f7d32;--leaf-dark:#174a20;--paper:#fff0c8;--ink:#2d1a09;--muted:#795734;--gold:#ffd35a;--line:#b87b33;}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);font-family:"Trebuchet MS","Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:radial-gradient(circle at 10% 15%,rgba(255,225,120,.35),transparent 25%),radial-gradient(circle at 85% 5%,rgba(116,197,85,.22),transparent 22%),linear-gradient(180deg,#7fc6ff 0,#7fc6ff 12%,#50a347 12%,#2e741e 100%);min-height:100vh}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:linear-gradient(45deg,rgba(255,255,255,.25) 25%,transparent 25%),linear-gradient(-45deg,rgba(255,255,255,.16) 25%,transparent 25%);background-size:8px 8px;mix-blend-mode:soft-light}.app{max-width:980px;margin:0 auto;padding:14px 12px 110px}.hero{position:relative;overflow:hidden;border:6px solid var(--wood-dark);border-radius:22px;box-shadow:0 10px 0 #2b1707,0 18px 36px rgba(0,0,0,.28);background:linear-gradient(90deg,rgba(55,26,4,.35),rgba(255,220,117,.12),rgba(55,26,4,.35)),repeating-linear-gradient(0deg,#9b5f23 0,#9b5f23 10px,#8a501a 10px,#8a501a 20px);padding:18px 14px 16px;text-align:center;color:#fff4b2;text-shadow:3px 3px 0 #3b2109,-1px -1px 0 #3b2109}.hero h1{margin:0;font-size:clamp(28px,7vw,56px);letter-spacing:1px;line-height:1.06}.hero p{margin:10px auto 0;font-weight:800;color:#fff7d0;font-size:clamp(14px,3.4vw,21px)}.panel{margin-top:14px;border:4px solid var(--wood-dark);border-radius:18px;background:linear-gradient(#fff3cf,#ffe6aa);box-shadow:0 7px 0 rgba(58,31,9,.8),inset 0 0 0 3px rgba(255,255,255,.35);padding:12px}.searchbar{position:sticky;top:0;z-index:10;padding-top:10px;backdrop-filter:blur(7px)}.input{width:100%;border:3px solid var(--wood-dark);border-radius:14px;padding:14px 48px 14px 14px;background:#fff8de;color:var(--ink);font-size:17px;font-weight:700;outline:none;box-shadow:inset 0 3px 0 rgba(0,0,0,.08)}.search-icon{position:absolute;right:28px;top:25px;font-size:23px}.tabs{display:flex;gap:8px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{border:3px solid var(--wood-dark);background:linear-gradient(#4b9d3d,#2f702b);color:#fff8c8;text-shadow:1px 1px 0 #17370f;border-radius:999px;padding:9px 13px;white-space:nowrap;font-weight:900;font-size:15px;box-shadow:0 4px 0 #2a1708}.tab.active{background:linear-gradient(#ffd966,#d99924);color:#3b2109;text-shadow:1px 1px 0 #fff0b0}.stats{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 2px;color:var(--muted);font-weight:800}.badge{display:inline-flex;align-items:center;gap:4px;border:2px solid var(--line);border-radius:999px;background:#fff8df;padding:4px 9px;font-size:13px}.section-title{display:flex;align-items:center;gap:8px;margin:18px 0 10px;background:linear-gradient(#3b8a33,#23631f);color:#fff7bf;border:4px solid var(--wood-dark);border-radius:14px;padding:8px 12px;font-size:20px;font-weight:1000;text-shadow:2px 2px 0 #15360f;box-shadow:0 5px 0 #2d1908}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}.card{position:relative;border:3px solid var(--line);border-radius:16px;background:linear-gradient(135deg,rgba(255,255,255,.45),transparent 35%),linear-gradient(#fff3cf,#ffe4a4);padding:12px;box-shadow:0 5px 0 #a26528,inset 0 0 0 2px rgba(255,255,255,.45)}.card-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.name{font-size:19px;line-height:1.25;font-weight:1000;color:#432404}.cat{flex:0 0 auto;border:2px solid var(--leaf-dark);color:#fff8ce;background:var(--leaf);border-radius:999px;padding:3px 7px;font-size:12px;font-weight:900}.row{margin-top:9px;display:grid;grid-template-columns:72px 1fr;gap:8px;line-height:1.5;font-size:14.5px}.label{color:#6a3c0b;font-weight:1000}.value{font-weight:700}.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.tag{font-size:12px;color:#52320e;background:#ffedbd;border:1px solid #d49a43;border-radius:999px;padding:3px 7px;font-weight:800}.tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.btn{border:3px solid var(--wood-dark);background:linear-gradient(#ffd966,#d89b25);color:#3b2109;border-radius:12px;padding:9px 12px;font-weight:1000;box-shadow:0 4px 0 #6f3d11}.btn.secondary{background:linear-gradient(#fff4ca,#e9c47a)}.empty{text-align:center;font-size:18px;font-weight:900;color:#6a3c0b;padding:30px 10px}.footer-note{margin-top:16px;font-size:13px;line-height:1.7;color:#5f3a17;background:rgba(255,248,222,.72);border:2px dashed #b87b33;border-radius:14px;padding:10px 12px}.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(47,125,50,.1),rgba(38,82,25,.95));display:flex;justify-content:center}.bottom-inner{width:min(980px,100%);display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.mini{border:3px solid var(--wood-dark);border-radius:14px;background:#fff2c4;padding:8px 6px;text-align:center;font-size:13px;font-weight:1000;color:#4b2a08;box-shadow:0 4px 0 #4b2a08}mark{background:#ffe066;color:#2d1a09;border-radius:4px;padding:0 2px}@media(max-width:520px){.app{padding-left:9px;padding-right:9px}.grid{grid-template-columns:1fr}.row{grid-template-columns:64px 1fr}.panel{padding:10px}.hero{border-width:5px}}
+:root {
+  --wood:#8b551e; --wood2:#774414; --dark:#4a280c;
+  --leaf:#2f7d32; --leaf2:#205e24; --paper:#fff0c8; --paper2:#ffe0a0;
+  --ink:#2c1908; --gold:#ffd35a; --line:#c18434; --sky:#8fd0ff; --grass:#3f9034;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0; color:var(--ink); font-family:"Trebuchet MS","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(255,255,255,.26), transparent 24%),
+    linear-gradient(180deg,var(--sky) 0 12%, #66b4e5 12% 16%, var(--grass) 16% 100%);
+}
+body::before {
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:.10;
+  background-image:
+    linear-gradient(45deg, rgba(255,255,255,.35) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255,255,255,.2) 25%, transparent 25%);
+  background-size:8px 8px;
+}
+.app { max-width:1100px; margin:0 auto; padding:14px 12px 100px; }
+.hero {
+  border:6px solid var(--dark); border-radius:28px; overflow:hidden;
+  box-shadow:0 10px 0 #341b07, 0 20px 36px rgba(0,0,0,.24);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.05)),
+    repeating-linear-gradient(0deg,#986227 0,#986227 10px,#8b571f 10px,#8b571f 20px);
+  text-align:center; padding:18px 12px 14px;
+  color:#fff4b2; text-shadow:3px 3px 0 #3c220a, -1px -1px 0 #3c220a;
+}
+.hero h1 {
+  margin:0; font-size:clamp(28px,7vw,58px); font-weight:1000; line-height:1.02; letter-spacing:1px;
+}
+.hero .small { margin-top:10px; font-size:clamp(13px,2.6vw,20px); font-weight:800; color:#fff8d6; }
+.panel {
+  margin-top:14px; padding:12px; border:4px solid var(--dark); border-radius:18px;
+  background:linear-gradient(#fff5d7,#ffe3a5); box-shadow:0 7px 0 #64380f, inset 0 0 0 2px rgba(255,255,255,.45);
+}
+.controls { position:sticky; top:0; z-index:20; backdrop-filter: blur(8px); padding-top:10px; }
+.input {
+  width:100%; border:3px solid var(--dark); border-radius:14px; background:#fff9e8; color:var(--ink);
+  padding:14px 46px 14px 14px; font-size:16px; font-weight:800; outline:none;
+  box-shadow: inset 0 3px 0 rgba(0,0,0,.08);
+}
+.search-wrap { position:relative; }
+.search-icon { position:absolute; right:16px; top:12px; font-size:22px; }
+.tabs, .subtabs {
+  display:flex; gap:8px; overflow:auto; scrollbar-width:none; padding:8px 0 0;
+}
+.tabs::-webkit-scrollbar, .subtabs::-webkit-scrollbar { display:none; }
+.tab, .subtab {
+  white-space:nowrap; border:3px solid var(--dark); border-radius:999px; padding:9px 12px;
+  font-size:14px; font-weight:1000; box-shadow:0 4px 0 #3d2108;
+}
+.tab { background:linear-gradient(#4ea443,#2a6c27); color:#fff9cd; text-shadow:1px 1px 0 #17360f; }
+.tab.active { background:linear-gradient(#ffd967,#d99924); color:#442709; text-shadow:1px 1px 0 #fff6c5; }
+.subtab { background:#fff5d7; color:#55300d; }
+.subtab.active { background:#ffe177; }
+.stats { margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; color:#744718; font-weight:900; }
+.badge { border:2px solid var(--line); border-radius:999px; background:#fff8df; padding:4px 10px; font-size:13px; }
+.section-title {
+  margin:18px 0 10px; display:flex; align-items:center; gap:8px;
+  border:4px solid var(--dark); border-radius:14px; padding:8px 12px;
+  background:linear-gradient(#3b8a33,#23631f); color:#fff7bf; font-size:20px; font-weight:1000;
+  text-shadow:2px 2px 0 #15360f; box-shadow:0 5px 0 #2d1908;
+}
+.grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px;
+}
+.card {
+  border:3px solid var(--line); border-radius:16px; padding:12px;
+  background:linear-gradient(135deg, rgba(255,255,255,.45), transparent 35%), linear-gradient(#fff5d8,#ffe5ab);
+  box-shadow:0 5px 0 #a56728, inset 0 0 0 2px rgba(255,255,255,.35);
+}
+.card .head { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+.card .title { font-size:19px; font-weight:1000; color:#432404; line-height:1.25; }
+.pill {
+  flex:0 0 auto; font-size:12px; font-weight:1000; padding:3px 7px;
+  border-radius:999px; border:2px solid var(--leaf2); background:var(--leaf); color:#fffad2;
+}
+.row { margin-top:9px; display:grid; grid-template-columns:74px 1fr; gap:8px; font-size:14.5px; line-height:1.55; }
+.label { color:#6a3c0b; font-weight:1000; }
+.value { font-weight:700; }
+.tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.tag { font-size:12px; font-weight:800; padding:3px 7px; border-radius:999px; background:#ffefc3; border:1px solid #d39a43; color:#56330f; }
+.gallery {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px;
+}
+.gcard {
+  border:3px solid var(--line); border-radius:18px; overflow:hidden; background:#fff5da;
+  box-shadow:0 5px 0 #a56728, inset 0 0 0 2px rgba(255,255,255,.35);
+}
+.thumb-wrap {
+  display:block; aspect-ratio: 3 / 4; overflow:hidden; background:#f7e0a3;
+}
+.thumb {
+  width:100%; height:100%; object-fit:cover; object-position: top center; display:block;
+  transition: transform .25s ease;
+}
+.gcard:hover .thumb { transform:scale(1.02); }
+.gbody { padding:10px 12px 12px; }
+.gtitle { font-size:18px; font-weight:1000; color:#432404; line-height:1.2; }
+.gdesc { margin-top:6px; color:#5a3714; font-weight:700; line-height:1.55; font-size:14px; min-height:66px; }
+.actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  text-decoration:none; border:3px solid var(--dark); border-radius:12px; padding:8px 10px;
+  background:linear-gradient(#ffd966,#d89b25); color:#3b2109; font-weight:1000; box-shadow:0 4px 0 #6f3d11;
+}
+.btn.secondary { background:linear-gradient(#fff4ca,#e9c47a); }
+.note {
+  margin-top:14px; padding:11px 12px; border:2px dashed #c18434; border-radius:14px;
+  background:rgba(255,248,222,.75); color:#5e3916; line-height:1.7; font-size:14px; font-weight:700;
+}
+.bottom {
+  position:fixed; left:0; right:0; bottom:0; z-index:25;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom)); background:linear-gradient(180deg,rgba(47,125,50,.1),rgba(38,82,25,.95));
+}
+.bottom-inner {
+  max-width:1100px; margin:0 auto; display:grid; gap:8px; grid-template-columns:repeat(4,1fr);
+}
+.mini {
+  border:3px solid var(--dark); border-radius:14px; background:#fff2c4; padding:8px 6px;
+  text-align:center; font-size:13px; font-weight:1000; color:#4b2a08; box-shadow:0 4px 0 #4b2a08;
+}
+.empty {
+  text-align:center; font-size:18px; font-weight:1000; color:#6a3c0b; padding:30px 10px;
+}
+.footer-note { margin-top:16px; font-size:13px; color:#603a17; line-height:1.7; }
+mark { background:#ffe066; color:#2d1a09; border-radius:4px; padding:0 2px; }
+@media (max-width: 680px) {
+  .grid, .gallery { grid-template-columns:1fr; }
+  .row { grid-template-columns:62px 1fr; }
+  .bottom-inner { grid-template-columns:1fr 1fr; }
+}
 </style>
 </head>
 <body>
-<main class="app">
-<header class="hero"><h1>🌾 星露谷物语 1.6<br>任务查询手册</h1><p>剧情任务｜随机求助｜特别订单｜齐先生订单｜隐藏后期</p></header>
-<section class="panel searchbar"><div style="position:relative;"><input id="q" class="input" placeholder="搜索任务名、NPC、物品、地点，例如：罗宾 / 骷髅洞 / 虚空蛋黄酱" autocomplete="off" /><span class="search-icon">🔍</span></div><div id="tabs" class="tabs"></div><div class="stats"><span class="badge">📜 当前显示：<b id="count">0</b> 条</span><span class="badge">⭐ 点击分类或输入关键词即可筛选</span></div><div class="tools"><button class="btn secondary" onclick="clearSearch()">清空搜索</button><button class="btn secondary" onclick="window.scrollTo({top:0,behavior:'smooth'})">回到顶部</button></div></section>
-<section id="list" class="panel"></section>
-<div class="footer-note"><b>微信使用说明：</b>这是一个纯前端 H5 页面，不需要服务器接口。把这个 HTML 文件上传到任意 HTTPS 静态托管空间后，将链接发到微信即可直接打开。若直接把 HTML 当文件发到微信，部分机型可能只预览文本或限制脚本运行，建议用链接形式打开。</div>
-</main>
-<nav class="bottom-nav"><div class="bottom-inner"><button class="mini" onclick="setCat('剧情任务')">📘 剧情</button><button class="mini" onclick="setCat('特别订单')">📌 订单</button><button class="mini" onclick="setCat('齐先生订单')">💎 齐先生</button></div></nav>
+  <main class="app">
+    <header class="hero">
+      <h1>🌾 星露谷物语 1.6<br>姒小姐的生活指南</h1>
+      <div class="small">Stardew Valley 1.6｜任务查询｜图鉴长图｜树木 / 采矿 / 钓鱼 / 种植 / 怪物</div>
+    </header>
+
+    <section class="panel controls">
+      <div class="search-wrap">
+        <input id="q" class="input" placeholder="搜索任务、物品、NPC、地点或图鉴名，例如：罗宾 / 骷髅洞 / 树液采集器 / 钓鱼" autocomplete="off" />
+        <span class="search-icon">🔍</span>
+      </div>
+      <div id="tabs" class="tabs"></div>
+      <div id="subtabs" class="subtabs"></div>
+      <div class="stats">
+        <span class="badge">📚 当前显示：<b id="count">0</b> 条</span>
+        <span class="badge">⭐ 可按“内容类型 / 细分类”双重筛选</span>
+      </div>
+      <div class="actions">
+        <button class="btn secondary" onclick="clearSearch()">清空搜索</button>
+        <button class="btn secondary" onclick="scrollToTop()">回到顶部</button>
+      </div>
+    </section>
+
+    <section id="content" class="panel"></section>
+
+    <div class="note">
+      <b>使用说明：</b>
+      这个页面已把原来的“任务查询手册”更名为 <b>“姒小姐的生活指南”</b>，并新增“长图图鉴查询”：
+      可搜索树木/树液/蘑菇树桩、制作物、伐木、采矿、钓鱼、种植、怪物掉落等内容。
+      点击长图卡片可查看完整 PNG。
+    </div>
+    <div class="footer-note">
+      <b>发布到 GitHub Pages：</b>请把这个站点包里所有文件（尤其是 <code>index.html</code> 和 <code>assets</code> 文件夹）一起上传到仓库根目录。
+      上传后 GitHub Pages 会自动重新部署，通常 1–3 分钟生效。
+    </div>
+  </main>
+
+  <nav class="bottom">
+    <div class="bottom-inner">
+      <button class="mini" onclick="setType('全部')">🏠 全部</button>
+      <button class="mini" onclick="setType('任务库')">📘 任务库</button>
+      <button class="mini" onclick="setType('树木 / 蘑菇')">🌲 树木</button>
+      <button class="mini" onclick="setType('长图图鉴')">🖼️ 长图</button>
+    </div>
+  </nav>
+
 <script>
-const TASKS = [{"cat": "剧情任务", "name": "介绍", "trigger": "开局自动获得", "how": "与镇上 28 位居民打招呼。", "reward": "熟悉居民，推进基础社交。", "tags": ["开局", "居民", "社交"]}, {"cat": "剧情任务", "name": "交朋友的方法", "trigger": "完成“介绍”后", "how": "给任意居民送 1 份礼物。", "reward": "学会送礼系统。", "tags": ["社交", "送礼"]}, {"cat": "剧情任务", "name": "开始种田", "trigger": "开局包裹", "how": "种下并收获 1 个防风草。", "reward": "基础耕种教学。", "tags": ["开局", "种植"]}, {"cat": "剧情任务", "name": "前往海滩", "trigger": "春 2 日收到威利来信", "how": "下午 5 点前去海滩找威利。", "reward": "获得竹鱼竿。", "tags": ["钓鱼", "威利", "春季"]}, {"cat": "剧情任务", "name": "饲养动物", "trigger": "完成“开始种田”后", "how": "找罗宾建造鸡舍。", "reward": "开启动物养殖。", "tags": ["动物", "建筑", "罗宾"]}, {"cat": "剧情任务", "name": "喂养动物", "trigger": "养殖推进或草原农场相关", "how": "建造筒仓，储存干草。", "reward": "方便喂养动物。", "tags": ["动物", "筒仓"]}, {"cat": "剧情任务", "name": "进步", "trigger": "完成“开始种田”后", "how": "耕种达到 1 级并制作稻草人。", "reward": "解锁基础防乌鸦能力。", "tags": ["耕种", "稻草人"]}, {"cat": "剧情任务", "name": "探索矿井", "trigger": "进入矿井后", "how": "到达矿井第 5 层。", "reward": "开启矿井探索目标。", "tags": ["采矿", "矿井"]}, {"cat": "剧情任务", "name": "更深的矿井", "trigger": "到达矿井第 5 层后", "how": "到达矿井第 40 层。", "reward": "进入冰层区域。", "tags": ["采矿", "矿井"]}, {"cat": "剧情任务", "name": "到底了吗？", "trigger": "到达矿井第 40 层后", "how": "到达矿井第 120 层。", "reward": "获得骷髅钥匙。", "tags": ["采矿", "骷髅钥匙"]}, {"cat": "剧情任务", "name": "考古学", "trigger": "获得可捐赠的矿物或古物后", "how": "向博物馆捐赠任意 1 件物品。", "reward": "开启博物馆捐赠体系。", "tags": ["博物馆", "冈瑟"]}, {"cat": "剧情任务", "name": "老鼠问题", "trigger": "春 5 日后晴天 8:00–13:00 从公交站进入小镇触发社区中心剧情", "how": "进入社区中心，查看工艺室的金色卷轴。", "reward": "开启社区中心主线。", "tags": ["社区中心", "主线"]}, {"cat": "剧情任务", "name": "拜访法师", "trigger": "看过金色卷轴后次日收到法师信", "how": "去法师塔拜访法师。", "reward": "学会阅读祝尼魔文字，推进收集包。", "tags": ["法师", "社区中心"]}, {"cat": "剧情任务", "name": "锻造前进", "trigger": "获得铜矿石后次日克林特上门", "how": "制作 1 个熔炉。", "reward": "开启金属锭冶炼。", "tags": ["采矿", "熔炉", "克林特"]}, {"cat": "剧情任务", "name": "熔炼", "trigger": "完成“锻造前进”后", "how": "用熔炉炼出 1 个铜锭。", "reward": "掌握基础冶炼。", "tags": ["采矿", "铜锭"]}, {"cat": "剧情任务", "name": "入会仪式", "trigger": "到达矿井第 5 层后收到信", "how": "击杀 10 只史莱姆，然后去探险家公会。", "reward": "解锁探险家公会。", "tags": ["战斗", "史莱姆"]}, {"cat": "剧情任务", "name": "罗宾丢失的斧头", "trigger": "春 11 日来信", "how": "在煤矿森林下水道管道附近找到斧头，交给罗宾。", "reward": "金币与罗宾好感。", "tags": ["罗宾", "春季", "找物"]}, {"cat": "剧情任务", "name": "乔迪的请求", "trigger": "春 19 日来信", "how": "给乔迪 1 个花椰菜。", "reward": "金币与乔迪好感。", "tags": ["乔迪", "春季", "作物"]}, {"cat": "剧情任务", "name": "镇长的“短裤”", "trigger": "夏 3 日来信", "how": "在玛妮卧室找到紫色短裤，交给刘易斯。", "reward": "金币与刘易斯好感。", "tags": ["刘易斯", "玛妮", "夏季"]}, {"cat": "剧情任务", "name": "黑莓篮子", "trigger": "秋 8 日来信", "how": "在公交站左侧通往隧道的路边找到篮子，交给莱纳斯。", "reward": "莱纳斯好感。", "tags": ["莱纳斯", "秋季", "找物"]}, {"cat": "剧情任务", "name": "玛妮的请求", "trigger": "玛妮 3 心后上门", "how": "带 1 个山洞萝卜进玛妮商店。", "reward": "玛妮好感。", "tags": ["玛妮", "山洞萝卜"]}, {"cat": "剧情任务", "name": "帕姆口渴了", "trigger": "夏 14 日来信", "how": "给帕姆 1 杯淡啤酒。", "reward": "金币与帕姆好感。", "tags": ["帕姆", "夏季", "淡啤酒"]}, {"cat": "剧情任务", "name": "黑暗试剂", "trigger": "冬 12 日来信", "how": "给法师 1 个虚空精华。", "reward": "金币与法师好感。", "tags": ["法师", "冬季", "虚空精华"]}, {"cat": "剧情任务", "name": "奶牛的喜悦", "trigger": "秋 3 日来信", "how": "给玛妮 1 个苋菜。", "reward": "金币与玛妮好感。", "tags": ["玛妮", "秋季", "苋菜"]}, {"cat": "剧情任务", "name": "作物研究", "trigger": "夏 20 日来信", "how": "给德米特里厄斯 1 个甜瓜。", "reward": "金币与好感。", "tags": ["德米特里厄斯", "夏季", "甜瓜"]}, {"cat": "剧情任务", "name": "膝盖疗法", "trigger": "夏 25 日来信", "how": "给乔治 1 个辣椒。", "reward": "金币与乔治好感。", "tags": ["乔治", "夏季", "辣椒"]}, {"cat": "剧情任务", "name": "罗宾的请求", "trigger": "冬 21 日来信", "how": "给罗宾 10 个硬木。", "reward": "金币与罗宾好感。", "tags": ["罗宾", "冬季", "硬木"]}, {"cat": "剧情任务", "name": "雕刻南瓜", "trigger": "秋 19 日来信", "how": "给卡洛琳 1 个南瓜。", "reward": "金币与卡洛琳好感。", "tags": ["卡洛琳", "秋季", "南瓜"]}, {"cat": "剧情任务", "name": "新鲜水果", "trigger": "第 2 年春 6 日来信", "how": "给艾米丽 1 个杏子。", "reward": "金币与艾米丽好感。", "tags": ["艾米丽", "果树"]}, {"cat": "剧情任务", "name": "水生研究", "trigger": "第 2 年夏 6 日来信", "how": "给德米特里厄斯 1 条河豚。", "reward": "金币与好感。", "tags": ["钓鱼", "河豚"]}, {"cat": "剧情任务", "name": "士兵的星星", "trigger": "第 2 年夏 15 日来信", "how": "给肯特 1 个杨桃。", "reward": "金币与肯特好感。", "tags": ["肯特", "杨桃"]}, {"cat": "剧情任务", "name": "镇长的需求", "trigger": "第 2 年夏 21 日来信", "how": "给刘易斯 1 瓶松露油。", "reward": "金币与刘易斯好感。", "tags": ["刘易斯", "松露油"]}, {"cat": "剧情任务", "name": "通缉：龙虾", "trigger": "第 2 年秋 6 日来信", "how": "给格斯 1 只龙虾。", "reward": "金币与格斯好感。", "tags": ["格斯", "龙虾"]}, {"cat": "剧情任务", "name": "帕姆需要果汁", "trigger": "第 2 年秋 19 日来信", "how": "给帕姆 1 个电池组。", "reward": "金币与帕姆好感。", "tags": ["帕姆", "电池组"]}, {"cat": "剧情任务", "name": "鱼肉砂锅", "trigger": "乔迪 4 心事件", "how": "带 1 条大嘴鲈鱼，晚上 7 点进入乔迪家。", "reward": "剧情与好感。", "tags": ["乔迪", "钓鱼"]}, {"cat": "剧情任务", "name": "抓鱿鱼", "trigger": "冬 2 日来信", "how": "给威利 1 条鱿鱼。", "reward": "金币与威利好感。", "tags": ["威利", "冬季", "鱿鱼"]}, {"cat": "剧情任务", "name": "鱼汤", "trigger": "冬 26 日来信", "how": "给格斯 1 条长鳍金枪鱼。", "reward": "金币与格斯好感。", "tags": ["格斯", "冬季", "钓鱼"]}, {"cat": "剧情任务", "name": "皮埃尔的告示", "trigger": "第 2 年春 21 日来信", "how": "给皮埃尔 1 份生鱼片。", "reward": "金币与皮埃尔好感。", "tags": ["皮埃尔", "料理"]}, {"cat": "剧情任务", "name": "克林特的尝试", "trigger": "冬 6 日来信", "how": "把 1 个紫水晶交给艾米丽。", "reward": "金币与好感。", "tags": ["克林特", "艾米丽", "紫水晶"]}, {"cat": "剧情任务", "name": "给克林特的帮忙", "trigger": "冬 17 日来信", "how": "给克林特 1 个铁锭。", "reward": "金币与克林特好感。", "tags": ["克林特", "铁锭"]}, {"cat": "剧情任务", "name": "力量法杖", "trigger": "第 2 年冬 5 日来信", "how": "给法师 1 个铱锭。", "reward": "金币与法师好感。", "tags": ["法师", "铱锭"]}, {"cat": "剧情任务", "name": "奶奶的礼物", "trigger": "第 2 年春 15 日来信", "how": "给艾芙琳 1 个韭葱。", "reward": "金币与艾芙琳好感。", "tags": ["艾芙琳", "韭葱"]}, {"cat": "剧情任务", "name": "异域烈酒", "trigger": "第 2 年冬 19 日来信", "how": "给格斯 1 个椰子。", "reward": "金币与格斯好感。", "tags": ["格斯", "椰子"]}, {"cat": "剧情任务", "name": "抓鳕鱼", "trigger": "第 2 年冬 13 日来信", "how": "给威利 1 条蛇齿单线鱼。", "reward": "金币与威利好感。", "tags": ["威利", "钓鱼"]}, {"cat": "剧情任务", "name": "骷髅钥匙", "trigger": "到达矿井 120 层", "how": "拿到骷髅钥匙后，用它解锁沙漠骷髅洞。", "reward": "开启骷髅洞。", "tags": ["矿井", "沙漠"]}, {"cat": "剧情任务", "name": "齐先生的挑战", "trigger": "进入骷髅洞后次日来信", "how": "到达骷髅洞第 25 层。", "reward": "金币与后续挑战铺垫。", "tags": ["齐先生", "骷髅洞"]}, {"cat": "剧情任务", "name": "神秘的齐", "trigger": "在公交隧道锁箱放入电池组", "how": "按线索依次：火车站箱子放彩虹贝壳 → 刘易斯冰箱放 10 个甜菜 → 沙漠龙骨放太阳精华 → 检查农舍旁木堆。", "reward": "获得赌场会员卡。", "tags": ["齐先生", "赌场", "隐藏"]}, {"cat": "剧情任务", "name": "冬日谜团", "trigger": "冬季 6:00–16:00 从农场进入公交站", "how": "跟踪黑影，到小镇游乐场右侧灌木互动。", "reward": "获得放大镜，可阅读秘密纸条。", "tags": ["冬季", "秘密纸条"]}, {"cat": "剧情任务", "name": "奇怪的纸条", "trigger": "阅读秘密纸条 #23", "how": "带枫糖浆在 6:00–19:00 进入秘密森林。", "reward": "触发熊剧情与售卖价格加成。", "tags": ["秘密森林", "枫糖浆"]}, {"cat": "剧情任务", "name": "神秘纸条", "trigger": "阅读秘密纸条 #10", "how": "到达骷髅洞第 100 层。", "reward": "齐先生剧情。", "tags": ["骷髅洞", "秘密纸条"]}, {"cat": "剧情任务", "name": "黑暗护身符", "trigger": "完成社区中心或 Joja 仓库后，铁路剧情触发", "how": "去下水道找科罗布斯，再进突变虫穴拿黑暗护身符。", "reward": "推进女巫沼泽线。", "tags": ["女巫", "下水道", "科罗布斯"]}, {"cat": "剧情任务", "name": "哥布林问题", "trigger": "完成黑暗护身符后", "how": "给女巫沼泽门口的哥布林 1 个虚空蛋黄酱，进屋拿魔法墨水交给法师。", "reward": "解锁法师建筑。", "tags": ["女巫", "法师", "虚空蛋黄酱"]}, {"cat": "剧情任务", "name": "海盗的妻子", "trigger": "姜岛与伯蒂对话", "how": "按交换链：战争纪念物→肯特→格斯→桑迪→乔治→法师→威利→伯蒂。", "reward": "仙尘配方与金核桃。", "tags": ["姜岛", "伯蒂", "交换链"]}, {"cat": "剧情任务", "name": "巨大树桩", "trigger": "暴风后煤矿森林南边大树倒下", "how": "交 100 个硬木修复树桩，开启浣熊任务线。", "reward": "开启浣熊商店与后续请求。", "tags": ["浣熊", "硬木", "后期"]}, {"cat": "随机求助", "name": "物品交付", "trigger": "皮埃尔杂货店外公告板随机刷新", "how": "把指定物品拿在手上交给委托 NPC。交付类任务通常不占本周送礼次数。", "reward": "金币与委托人好感。", "tags": ["公告板", "交付", "2天"]}, {"cat": "随机求助", "name": "资源收集", "trigger": "公告板随机刷新，常见发布人：克林特、罗宾", "how": "接任务后重新收集指定木材、石头、矿石、煤炭等；完成后找发布人。", "reward": "金币与好感。", "tags": ["公告板", "资源", "2天"]}, {"cat": "随机求助", "name": "击杀怪物", "trigger": "公告板随机刷新，常见发布人：克林特、刘易斯、德米特里厄斯、法师", "how": "击杀指定数量的指定怪物，完成后回去找发布人。", "reward": "金币与好感。", "tags": ["公告板", "战斗", "2天"]}, {"cat": "随机求助", "name": "钓鱼任务", "trigger": "公告板随机刷新，常见发布人：威利、德米特里厄斯", "how": "钓到指定数量或指定种类的鱼；多数情况下鱼可以自己保留。", "reward": "金币与好感。", "tags": ["公告板", "钓鱼", "2天"]}, {"cat": "随机求助", "name": "打招呼 / 社交", "trigger": "公告板随机刷新，常见发布人：艾米丽", "how": "与指定数量的居民交谈。", "reward": "好感提升。", "tags": ["公告板", "社交", "2天"]}, {"cat": "特别订单", "name": "岛屿食材", "trigger": "姜岛解锁后，特别订单板随机出现；发布人：卡洛琳", "how": "28 天内收获并出货 100 个芋头、姜或菠萝之一。", "reward": "太阳能板配方。", "tags": ["特别订单", "姜岛", "28天"]}, {"cat": "特别订单", "name": "洞穴巡逻", "trigger": "特别订单板；发布人：克林特", "how": "7 天内击杀 50 只蝙蝠、灰尘精灵、骷髅或蛆之一。", "reward": "晶球破开器配方。", "tags": ["特别订单", "战斗", "7天"]}, {"cat": "特别订单", "name": "水域过度繁殖", "trigger": "特别订单板；发布人：德米特里厄斯", "how": "7 天内按季节钓 10 条指定鱼。", "reward": "农场电脑配方。", "tags": ["特别订单", "钓鱼", "7天"]}, {"cat": "特别订单", "name": "生态平衡", "trigger": "特别订单板；发布人：德米特里厄斯", "how": "7 天内钓 20 条指定类别鱼：河鱼、海鱼或湖鱼。", "reward": "金币奖励。", "tags": ["特别订单", "钓鱼", "7天"]}, {"cat": "特别订单", "name": "岩石复兴", "trigger": "特别订单板；发布人：艾米丽", "how": "7 天内交红宝石、黄水晶、绿宝石、翡翠、紫水晶各 1 个。", "reward": "缝纫机。", "tags": ["特别订单", "宝石", "7天"]}, {"cat": "特别订单", "name": "给乔治的礼物", "trigger": "春季特别订单板；发布人：艾芙琳", "how": "28 天内收集 12 个韭葱，放到艾芙琳炉子上。", "reward": "咖啡机。", "tags": ["特别订单", "春季", "韭葱"]}, {"cat": "特别订单", "name": "过去的碎片", "trigger": "特别订单板；发布人：冈瑟", "how": "7 天内收集 100 个骨头类物品，放进博物馆箱子。", "reward": "骨磨机配方。", "tags": ["特别订单", "博物馆", "骨头"]}, {"cat": "特别订单", "name": "格斯的著名煎蛋卷", "trigger": "特别订单板；发布人：格斯", "how": "14 天内收集 24 个蛋，放进星之果实餐吧冰箱。", "reward": "迷你冰箱与剧情。", "tags": ["特别订单", "蛋", "14天"]}, {"cat": "特别订单", "name": "作物订单", "trigger": "非冬季特别订单板；发布人：刘易斯", "how": "28 天内收获并出货 100 个指定当季作物。", "reward": "迷你出货箱。", "tags": ["特别订单", "作物", "28天"]}, {"cat": "特别订单", "name": "社区清洁", "trigger": "特别订单板；发布人：莱纳斯", "how": "7 天内收集 20 个垃圾类物品，放到火车站箱子。", "reward": "纤维种子配方。", "tags": ["特别订单", "垃圾", "7天"]}, {"cat": "特别订单", "name": "烈性饮料", "trigger": "春季特别订单板；发布人：帕姆", "how": "14 天内用小桶制作 12 瓶土豆汁，放进帕姆厨房。", "reward": "农场电脑配方。", "tags": ["特别订单", "土豆汁", "14天"]}, {"cat": "特别订单", "name": "皮埃尔的优质农产品", "trigger": "特别订单板；发布人：皮埃尔", "how": "28 天内收获 25 个金星蔬菜，放进皮埃尔店内箱子。", "reward": "迷你出货箱。", "tags": ["特别订单", "金星", "28天"]}, {"cat": "特别订单", "name": "罗宾的项目", "trigger": "特别订单板；发布人：罗宾", "how": "7 天内收集 80 个硬木。", "reward": "石箱配方。", "tags": ["特别订单", "硬木", "7天"]}, {"cat": "特别订单", "name": "罗宾的资源冲刺", "trigger": "特别订单板；发布人：罗宾", "how": "7 天内收集 1000 个木材或石头。", "reward": "金币奖励。", "tags": ["特别订单", "木材", "石头"]}, {"cat": "特别订单", "name": "想要多汁虫肉！", "trigger": "特别订单板；发布人：威利", "how": "7 天内收集 100 个虫肉，放到鱼店旁箱子。", "reward": "优质浮标配方。", "tags": ["特别订单", "虫肉", "钓鱼"]}, {"cat": "特别订单", "name": "热带鱼", "trigger": "姜岛度假村开放后；发布人：威利", "how": "7 天内钓 5 条魟鱼、5 条蓝铁饼鱼、5 条狮子鱼。", "reward": "豪华鱼缸。", "tags": ["特别订单", "姜岛", "钓鱼"]}, {"cat": "特别订单", "name": "奇怪物质", "trigger": "特别订单板；发布人：法师", "how": "7 天内击杀幽灵获得 1 个灵外质。", "reward": "迷你图腾配方。", "tags": ["特别订单", "幽灵", "灵外质"]}, {"cat": "特别订单", "name": "五彩果冻", "trigger": "特别订单板；发布人：法师", "how": "7 天内在矿井中找到五彩史莱姆，击杀获得五彩果冻。", "reward": "怪物香水配方。", "tags": ["特别订单", "法师", "五彩史莱姆"]}, {"cat": "齐先生订单", "name": "齐豆任务", "trigger": "姜岛核桃房特别订单板", "how": "28 天内找齐豆，种成齐瓜，并通过出货箱出货 500 个齐瓜。卖给皮埃尔不算。", "reward": "100 齐钻。", "tags": ["齐先生", "齐钻", "28天"]}, {"cat": "齐先生订单", "name": "玩个游戏", "trigger": "姜岛核桃房特别订单板", "how": "7 天内在祝尼魔赛车无尽模式中获得 50,000 分。", "reward": "20 齐钻。", "tags": ["齐先生", "小游戏", "7天"]}, {"cat": "齐先生订单", "name": "四颗珍贵宝石", "trigger": "姜岛核桃房特别订单板", "how": "28 天内接任务后收集 4 个五彩碎片，放进齐先生箱子。", "reward": "40 齐钻。", "tags": ["齐先生", "五彩碎片", "28天"]}, {"cat": "齐先生订单", "name": "齐先生的饥饿挑战", "trigger": "姜岛核桃房特别订单板", "how": "7 天内不吃不喝到达骷髅洞第 100 层；可以用楼梯。", "reward": "25 齐钻。", "tags": ["齐先生", "骷髅洞", "7天"]}, {"cat": "齐先生订单", "name": "齐先生的料理", "trigger": "姜岛核桃房特别订单板", "how": "14 天内烹饪并出货总价值 100,000g 的新鲜料理。必须是接任务后制作的料理。", "reward": "25 齐钻。", "tags": ["齐先生", "料理", "14天"]}, {"cat": "齐先生订单", "name": "齐先生的善意", "trigger": "姜岛核桃房特别订单板", "how": "7 天内送出 50 份居民最爱礼物；星之果实茶不计入。", "reward": "40 齐钻。", "tags": ["齐先生", "送礼", "7天"]}, {"cat": "齐先生订单", "name": "扩展家庭", "trigger": "姜岛核桃房特别订单板", "how": "3 天内钓到 5 条传奇鱼二代：琵琶鱼女士、小冰川鱼、绯红鱼之子、放射性鲤鱼、传说之鱼二代。", "reward": "20 齐钻。", "tags": ["齐先生", "传奇鱼", "3天"]}, {"cat": "齐先生订单", "name": "深处的危险", "trigger": "姜岛核桃房特别订单板", "how": "7 天内矿井电梯重置后重新到达矿井底层；可以用楼梯。", "reward": "50 齐钻。", "tags": ["齐先生", "矿井", "7天"]}, {"cat": "齐先生订单", "name": "骷髅洞入侵", "trigger": "姜岛核桃房特别订单板", "how": "7 天内到达骷髅洞第 100 层；可以用楼梯。", "reward": "40 齐钻。", "tags": ["齐先生", "骷髅洞", "7天"]}, {"cat": "齐先生订单", "name": "齐先生的五彩农场", "trigger": "姜岛核桃房特别订单板", "how": "14 天内各放入 100 个红、橙、黄、绿、蓝、紫色物品到齐先生收集箱。", "reward": "35 齐钻。", "tags": ["齐先生", "颜色", "14天"]}, {"cat": "隐藏/后期任务", "name": "神秘的齐任务链", "trigger": "公交隧道锁箱放入电池组", "how": "电池组 → 火车站彩虹贝壳 → 刘易斯冰箱 10 甜菜 → 沙漠龙骨太阳精华 → 农舍木堆。", "reward": "赌场会员卡。", "tags": ["隐藏", "赌场", "齐先生"]}, {"cat": "隐藏/后期任务", "name": "冬日谜团 / 放大镜", "trigger": "冬季白天从农场去公交站", "how": "跟踪黑影到小镇游乐场右侧灌木并互动。", "reward": "放大镜，解锁秘密纸条。", "tags": ["隐藏", "冬季", "放大镜"]}, {"cat": "隐藏/后期任务", "name": "秘密纸条 #23：奇怪的纸条", "trigger": "读到秘密纸条 #23", "how": "带枫糖浆在 6:00–19:00 进入秘密森林。", "reward": "熊的知识，黑莓和鲑莓售价提高。", "tags": ["秘密纸条", "秘密森林", "枫糖浆"]}, {"cat": "隐藏/后期任务", "name": "秘密纸条 #10：骷髅洞 100 层", "trigger": "读到秘密纸条 #10", "how": "到达骷髅洞第 100 层。", "reward": "齐先生剧情与生命值奖励。", "tags": ["秘密纸条", "骷髅洞"]}, {"cat": "隐藏/后期任务", "name": "黑暗护身符", "trigger": "完成社区中心或 Joja 线后去铁路", "how": "铁路剧情后去下水道找科罗布斯，再进入突变虫穴拿护身符。", "reward": "可以进入女巫沼泽。", "tags": ["女巫", "科罗布斯", "后期"]}, {"cat": "隐藏/后期任务", "name": "哥布林问题", "trigger": "完成黑暗护身符后", "how": "给守门哥布林 1 个虚空蛋黄酱，进入女巫小屋拿魔法墨水交给法师。", "reward": "解锁法师魔法建筑。", "tags": ["女巫", "法师", "虚空蛋黄酱"]}, {"cat": "隐藏/后期任务", "name": "海盗的妻子", "trigger": "姜岛与伯蒂对话", "how": "交换链：战争纪念物→肯特→格斯→桑迪→乔治→法师→威利→伯蒂。", "reward": "仙尘配方与金核桃。", "tags": ["姜岛", "伯蒂", "交换链"]}, {"cat": "隐藏/后期任务", "name": "巨大树桩 / 浣熊线", "trigger": "暴风后煤矿森林南边大树倒下", "how": "交 100 硬木修复树桩，之后按浣熊家庭要求交物品。", "reward": "浣熊商店与后续奖励。", "tags": ["浣熊", "硬木", "后期"]}];
-const CATEGORIES = ["全部", "剧情任务", "随机求助", "特别订单", "齐先生订单", "隐藏/后期任务"];
-let currentCat = "全部";
-const qEl = document.getElementById("q");
+const TASKS = [{"cat": "剧情任务", "name": "介绍", "trigger": "开局自动获得", "how": "与镇上 28 位居民打招呼。", "reward": "熟悉居民，推进基础社交。", "tags": ["开局", "居民", "社交"]}, {"cat": "剧情任务", "name": "交朋友的方法", "trigger": "完成“介绍”后", "how": "给任意居民送 1 份礼物。", "reward": "学会送礼系统。", "tags": ["社交", "送礼"]}, {"cat": "剧情任务", "name": "开始种田", "trigger": "开局包裹", "how": "种下并收获 1 个防风草。", "reward": "基础耕种教学。", "tags": ["开局", "种植"]}, {"cat": "剧情任务", "name": "前往海滩", "trigger": "春 2 日收到威利来信", "how": "下午 5 点前去海滩找威利。", "reward": "获得竹鱼竿。", "tags": ["钓鱼", "威利", "春季"]}, {"cat": "剧情任务", "name": "探索矿井", "trigger": "进入矿井后", "how": "到达矿井第 5 层。", "reward": "开启矿井探索目标。", "tags": ["采矿", "矿井"]}, {"cat": "剧情任务", "name": "更深的矿井", "trigger": "到达矿井第 5 层后", "how": "到达矿井第 40 层。", "reward": "进入冰层区域。", "tags": ["采矿", "矿井"]}, {"cat": "剧情任务", "name": "到底了吗？", "trigger": "到达矿井第 40 层后", "how": "到达矿井第 120 层。", "reward": "获得骷髅钥匙。", "tags": ["采矿", "骷髅钥匙"]}, {"cat": "剧情任务", "name": "考古学", "trigger": "获得可捐赠的矿物或古物后", "how": "向博物馆捐赠任意 1 件物品。", "reward": "开启博物馆捐赠体系。", "tags": ["博物馆", "冈瑟"]}, {"cat": "剧情任务", "name": "老鼠问题", "trigger": "春 5 日后晴天进入小镇触发", "how": "进入社区中心，查看工艺室的金色卷轴。", "reward": "开启社区中心主线。", "tags": ["社区中心", "主线"]}, {"cat": "剧情任务", "name": "拜访法师", "trigger": "看过金色卷轴后次日收到法师信", "how": "去法师塔拜访法师。", "reward": "学会阅读祝尼魔文字。", "tags": ["法师", "社区中心"]}, {"cat": "剧情任务", "name": "锻造前进", "trigger": "获得铜矿石后次日克林特上门", "how": "制作 1 个熔炉。", "reward": "开启金属锭冶炼。", "tags": ["采矿", "熔炉", "克林特"]}, {"cat": "剧情任务", "name": "入会仪式", "trigger": "到达矿井第 5 层后收到信", "how": "击杀 10 只史莱姆，然后去探险家公会。", "reward": "解锁探险家公会。", "tags": ["战斗", "史莱姆"]}, {"cat": "剧情任务", "name": "罗宾丢失的斧头", "trigger": "春 11 日来信", "how": "在煤矿森林下水道管道附近找到斧头，交给罗宾。", "reward": "金币与罗宾好感。", "tags": ["罗宾", "春季", "找物"]}, {"cat": "剧情任务", "name": "镇长的“短裤”", "trigger": "夏 3 日来信", "how": "在玛妮卧室找到紫色短裤，交给刘易斯。", "reward": "金币与刘易斯好感。", "tags": ["刘易斯", "玛妮", "夏季"]}, {"cat": "剧情任务", "name": "黑莓篮子", "trigger": "秋 8 日来信", "how": "在公交站左侧通往隧道的路边找到篮子，交给莱纳斯。", "reward": "莱纳斯好感。", "tags": ["莱纳斯", "秋季", "找物"]}, {"cat": "剧情任务", "name": "黑暗护身符", "trigger": "完成社区中心或 Joja 线后，铁路剧情触发", "how": "去下水道找科罗布斯，再进突变虫穴拿黑暗护身符。", "reward": "推进女巫沼泽线。", "tags": ["女巫", "下水道", "科罗布斯"]}, {"cat": "剧情任务", "name": "哥布林问题", "trigger": "完成黑暗护身符后", "how": "给女巫沼泽门口的哥布林 1 个虚空蛋黄酱，进屋拿魔法墨水交给法师。", "reward": "解锁法师建筑。", "tags": ["女巫", "法师", "虚空蛋黄酱"]}, {"cat": "剧情任务", "name": "海盗的妻子", "trigger": "姜岛与伯蒂对话", "how": "按交换链：战争纪念物→肯特→格斯→桑迪→乔治→法师→威利→伯蒂。", "reward": "仙尘配方与金核桃。", "tags": ["姜岛", "伯蒂", "交换链"]}, {"cat": "剧情任务", "name": "巨大树桩", "trigger": "暴风后煤矿森林南边大树倒下", "how": "交 100 个硬木修复树桩，开启浣熊任务线。", "reward": "开启浣熊商店与后续请求。", "tags": ["浣熊", "硬木", "后期"]}, {"cat": "随机求助", "name": "物品交付", "trigger": "皮埃尔杂货店外公告板随机刷新", "how": "把指定物品拿在手上交给委托 NPC。", "reward": "金币与委托人好感。", "tags": ["公告板", "交付", "2天"]}, {"cat": "随机求助", "name": "资源收集", "trigger": "公告板随机刷新", "how": "接任务后重新收集指定木材、石头、矿石、煤炭等。", "reward": "金币与好感。", "tags": ["公告板", "资源", "2天"]}, {"cat": "随机求助", "name": "击杀怪物", "trigger": "公告板随机刷新", "how": "击杀指定数量的指定怪物，完成后回去找发布人。", "reward": "金币与好感。", "tags": ["公告板", "战斗", "2天"]}, {"cat": "随机求助", "name": "钓鱼任务", "trigger": "公告板随机刷新", "how": "钓到指定数量或指定种类的鱼；多数情况下鱼可以自己保留。", "reward": "金币与好感。", "tags": ["公告板", "钓鱼", "2天"]}, {"cat": "随机求助", "name": "打招呼 / 社交", "trigger": "公告板随机刷新", "how": "与指定数量的居民交谈。", "reward": "好感提升。", "tags": ["公告板", "社交", "2天"]}, {"cat": "特别订单", "name": "岛屿食材", "trigger": "姜岛解锁后，特别订单板随机出现；发布人：卡洛琳", "how": "28 天内收获并出货 100 个芋头、姜或菠萝之一。", "reward": "太阳能板配方。", "tags": ["特别订单", "姜岛", "28天"]}, {"cat": "特别订单", "name": "洞穴巡逻", "trigger": "特别订单板；发布人：克林特", "how": "7 天内击杀 50 只指定矿洞怪物。", "reward": "晶球破开器配方。", "tags": ["特别订单", "战斗", "7天"]}, {"cat": "特别订单", "name": "水域过度繁殖", "trigger": "特别订单板；发布人：德米特里厄斯", "how": "7 天内按季节钓 10 条指定鱼。", "reward": "农场电脑配方。", "tags": ["特别订单", "钓鱼", "7天"]}, {"cat": "特别订单", "name": "岩石复兴", "trigger": "特别订单板；发布人：艾米丽", "how": "7 天内交红宝石、黄水晶、绿宝石、翡翠、紫水晶各 1 个。", "reward": "缝纫机。", "tags": ["特别订单", "宝石", "7天"]}, {"cat": "特别订单", "name": "给乔治的礼物", "trigger": "春季特别订单板；发布人：艾芙琳", "how": "28 天内收集 12 个韭葱，放到艾芙琳炉子上。", "reward": "咖啡机。", "tags": ["特别订单", "春季", "韭葱"]}, {"cat": "特别订单", "name": "格斯的著名煎蛋卷", "trigger": "特别订单板；发布人：格斯", "how": "14 天内收集 24 个蛋，放进星之果实餐吧冰箱。", "reward": "迷你冰箱与剧情。", "tags": ["特别订单", "蛋", "14天"]}, {"cat": "特别订单", "name": "作物订单", "trigger": "非冬季特别订单板；发布人：刘易斯", "how": "28 天内收获并出货 100 个指定当季作物。", "reward": "迷你出货箱。", "tags": ["特别订单", "作物", "28天"]}, {"cat": "特别订单", "name": "社区清洁", "trigger": "特别订单板；发布人：莱纳斯", "how": "7 天内收集 20 个垃圾类物品，放到火车站箱子。", "reward": "纤维种子配方。", "tags": ["特别订单", "垃圾", "7天"]}, {"cat": "特别订单", "name": "想要多汁虫肉！", "trigger": "特别订单板；发布人：威利", "how": "7 天内收集 100 个虫肉，放到鱼店旁箱子。", "reward": "优质浮标配方。", "tags": ["特别订单", "虫肉", "钓鱼"]}, {"cat": "特别订单", "name": "奇怪物质", "trigger": "特别订单板；发布人：法师", "how": "7 天内击杀幽灵获得 1 个灵外质。", "reward": "迷你图腾配方。", "tags": ["特别订单", "幽灵", "灵外质"]}, {"cat": "特别订单", "name": "五彩果冻", "trigger": "特别订单板；发布人：法师", "how": "7 天内在矿井中找到五彩史莱姆，击杀获得五彩果冻。", "reward": "怪物香水配方。", "tags": ["特别订单", "法师", "五彩史莱姆"]}, {"cat": "齐先生订单", "name": "齐豆任务", "trigger": "姜岛核桃房特别订单板", "how": "28 天内找齐豆，种成齐瓜，并通过出货箱出货 500 个齐瓜。", "reward": "100 齐钻。", "tags": ["齐先生", "齐钻", "28天"]}, {"cat": "齐先生订单", "name": "玩个游戏", "trigger": "姜岛核桃房特别订单板", "how": "7 天内在祝尼魔赛车无尽模式中获得 50,000 分。", "reward": "20 齐钻。", "tags": ["齐先生", "小游戏", "7天"]}, {"cat": "齐先生订单", "name": "四颗珍贵宝石", "trigger": "姜岛核桃房特别订单板", "how": "28 天内接任务后收集 4 个五彩碎片，放进齐先生箱子。", "reward": "40 齐钻。", "tags": ["齐先生", "五彩碎片", "28天"]}, {"cat": "齐先生订单", "name": "齐先生的饥饿挑战", "trigger": "姜岛核桃房特别订单板", "how": "7 天内不吃不喝到达骷髅洞第 100 层。", "reward": "25 齐钻。", "tags": ["齐先生", "骷髅洞", "7天"]}, {"cat": "齐先生订单", "name": "齐先生的善意", "trigger": "姜岛核桃房特别订单板", "how": "7 天内送出 50 份居民最爱礼物。", "reward": "40 齐钻。", "tags": ["齐先生", "送礼", "7天"]}, {"cat": "齐先生订单", "name": "扩展家庭", "trigger": "姜岛核桃房特别订单板", "how": "3 天内钓到 5 条传奇鱼二代。", "reward": "20 齐钻。", "tags": ["齐先生", "传奇鱼", "3天"]}, {"cat": "齐先生订单", "name": "深处的危险", "trigger": "姜岛核桃房特别订单板", "how": "7 天内矿井电梯重置后重新到达矿井底层。", "reward": "50 齐钻。", "tags": ["齐先生", "矿井", "7天"]}, {"cat": "齐先生订单", "name": "骷髅洞入侵", "trigger": "姜岛核桃房特别订单板", "how": "7 天内到达骷髅洞第 100 层。", "reward": "40 齐钻。", "tags": ["齐先生", "骷髅洞", "7天"]}, {"cat": "齐先生订单", "name": "齐先生的五彩农场", "trigger": "姜岛核桃房特别订单板", "how": "14 天内各放入 100 个红、橙、黄、绿、蓝、紫色物品到齐先生收集箱。", "reward": "35 齐钻。", "tags": ["齐先生", "颜色", "14天"]}, {"cat": "隐藏/后期任务", "name": "神秘的齐任务链", "trigger": "公交隧道锁箱放入电池组", "how": "电池组 → 火车站彩虹贝壳 → 刘易斯冰箱 10 甜菜 → 沙漠龙骨太阳精华 → 农舍木堆。", "reward": "赌场会员卡。", "tags": ["隐藏", "赌场", "齐先生"]}, {"cat": "隐藏/后期任务", "name": "冬日谜团 / 放大镜", "trigger": "冬季白天从农场去公交站", "how": "跟踪黑影到小镇游乐场右侧灌木并互动。", "reward": "放大镜，解锁秘密纸条。", "tags": ["隐藏", "冬季", "放大镜"]}, {"cat": "隐藏/后期任务", "name": "秘密纸条 #23：奇怪的纸条", "trigger": "读到秘密纸条 #23", "how": "带枫糖浆在 6:00–19:00 进入秘密森林。", "reward": "熊的知识，黑莓和鲑莓售价提高。", "tags": ["秘密纸条", "秘密森林", "枫糖浆"]}, {"cat": "隐藏/后期任务", "name": "秘密纸条 #10：骷髅洞 100 层", "trigger": "读到秘密纸条 #10", "how": "到达骷髅洞第 100 层。", "reward": "齐先生剧情与生命值奖励。", "tags": ["秘密纸条", "骷髅洞"]}, {"cat": "隐藏/后期任务", "name": "海盗的妻子", "trigger": "姜岛与伯蒂对话", "how": "交换链：战争纪念物→肯特→格斯→桑迪→乔治→法师→威利→伯蒂。", "reward": "仙尘配方与金核桃。", "tags": ["姜岛", "伯蒂", "交换链"]}, {"cat": "隐藏/后期任务", "name": "巨大树桩 / 浣熊线", "trigger": "暴风后煤矿森林南边大树倒下", "how": "交 100 硬木修复树桩，之后按浣熊家庭要求交物品。", "reward": "浣熊商店与后续奖励。", "tags": ["浣熊", "硬木", "后期"]}];
+const TREES = [{"section": "树种总览", "name": "枫树", "summary": "由枫树种子长成。砍伐通常掉木材、树液、枫树种子。树液采集器产出枫糖浆。", "tags": ["树木", "种子", "树液采集器", "枫糖浆"]}, {"section": "树种总览", "name": "橡树", "summary": "由橡子长成。砍伐通常掉木材、树液、橡子。树液采集器产出橡树树脂。", "tags": ["树木", "种子", "树液采集器", "橡树树脂"]}, {"section": "树种总览", "name": "松树", "summary": "由松果长成。砍伐通常掉木材、树液、松果。树液采集器产出松焦油。", "tags": ["树木", "种子", "树液采集器", "松焦油"]}, {"section": "树种总览", "name": "桃花心木树", "summary": "由桃花心木种子长成。砍伐主要掉硬木、树液、桃花心木种子。树液采集器产出树液。", "tags": ["硬木", "桃花心木", "树液"]}, {"section": "树种总览", "name": "蘑菇树", "summary": "由蘑菇树种子长成。树液采集器可产普通蘑菇、红蘑菇、紫蘑菇。", "tags": ["蘑菇树", "树液采集器", "普通蘑菇", "红蘑菇", "紫蘑菇"]}, {"section": "树种总览", "name": "神秘树", "summary": "由神秘树种长成。树液采集器可产神秘糖浆。", "tags": ["神秘树", "神秘糖浆"]}, {"section": "树种总览", "name": "苔雨树（绿雨树）", "summary": "由长满苔藓的种子长成。树液采集器可产蕨菜。", "tags": ["绿雨树", "苔雨树", "蕨菜"]}, {"section": "蘑菇树桩规则", "name": "蘑菇树桩基础池", "summary": "每 4 天收获一次（雨天可提前 1 天）：80% 普通蘑菇、15% 红蘑菇、5% 紫蘑菇。", "tags": ["蘑菇树桩", "普通蘑菇", "红蘑菇", "紫蘑菇"]}, {"section": "蘑菇树桩规则", "name": "挨着橡树", "summary": "会把羊肚菌加入产出池。", "tags": ["蘑菇树桩", "橡树", "羊肚菌"]}, {"section": "蘑菇树桩规则", "name": "挨着松树", "summary": "会把鸡油菌加入产出池。", "tags": ["蘑菇树桩", "松树", "鸡油菌"]}, {"section": "蘑菇树桩规则", "name": "挨着神秘树", "summary": "会提高紫蘑菇的出现权重。", "tags": ["蘑菇树桩", "神秘树", "紫蘑菇"]}, {"section": "蘑菇树桩规则", "name": "挨着枫树", "summary": "会提高红蘑菇的出现权重。", "tags": ["蘑菇树桩", "枫树", "红蘑菇"]}, {"section": "蘑菇树桩规则", "name": "挨着其他树（如桃花心木、苔雨树）", "summary": "无特定加成，仍使用基础概率池。", "tags": ["蘑菇树桩", "桃花心木", "苔雨树"]}];
+const GUIDES = [{"title": "树木采集与蘑菇树桩总览", "file": "星露谷物语_树木采集与蘑菇树桩汇总.png", "desc": "包含：可由种子种出的树、树液采集器产物、蘑菇树桩受周围树木影响的产物规则。", "tags": ["树", "种子", "树液采集器", "蘑菇树桩"]}, {"title": "制作物综合图鉴", "file": "星露谷物语_1.6制作指南.png", "desc": "制作物大类总览，适合作为入口图。", "tags": ["制作物", "综合", "图纸", "配方"]}, {"title": "工匠加工设备制作图鉴", "file": "工匠加工设备制作图鉴.png", "desc": "聚焦工匠加工类机器与用途。", "tags": ["制作物", "工匠", "机器", "设备"]}, {"title": "资源设备图鉴", "file": "星露谷物语_资源设备图鉴.png", "desc": "聚焦资源型设备与功能说明。", "tags": ["制作物", "资源", "设备"]}, {"title": "装饰与照明图鉴", "file": "星露谷物语装饰与照明图鉴.png", "desc": "装饰、照明与环境布置类。", "tags": ["制作物", "装饰", "照明"]}, {"title": "战斗与矿洞指南（制作物相关）", "file": "星露谷物语战斗与矿洞指南.png", "desc": "战斗与矿洞相关制作物、用途与搭配。", "tags": ["制作物", "战斗", "矿洞"]}, {"title": "存储与自动化图鉴", "file": "存储与自动化图鉴帮助.png", "desc": "存储、自动化、搬运与辅助类型制作物。", "tags": ["制作物", "存储", "自动化"]}, {"title": "伐木与树木掉落总览", "file": "星露谷物语_1.6_伐木指南.png", "desc": "砍伐什么树会掉什么、树在哪里找、特殊树木与资源说明。", "tags": ["伐木", "树木", "掉落", "位置"]}, {"title": "采矿全资料总览", "file": "星露谷采矿全资料指南.png", "desc": "矿区层数、矿石与宝石、晶球地晶、工具升级与冶炼速查。", "tags": ["采矿", "矿石", "宝石", "晶球"]}, {"title": "钓鱼全资料总览", "file": "星露谷物语钓鱼全攻略.png", "desc": "地点时间、四季鱼类、传奇鱼、鱼饵与浮标、蟹笼。", "tags": ["钓鱼", "季节鱼", "传奇鱼", "鱼饵", "浮标"]}, {"title": "种植全资料总览", "file": "星露谷物语作物全览图.png", "desc": "四季作物、特殊种植、果树、肥料与实用建议。", "tags": ["种植", "作物", "果树", "肥料"]}, {"title": "怪物与掉落总览", "file": "星露谷物语怪物与掉落地图.png", "desc": "矿井、骷髅洞、火山和地表怪物掉落与地点。", "tags": ["怪物", "掉落", "矿井", "骷髅洞", "火山"]}, {"title": "剧情任务总览图", "file": "星露谷物语任务总览解析.png", "desc": "主线剧情任务与常见居民任务图解。", "tags": ["任务", "剧情"]}, {"title": "随机任务指南图", "file": "星露谷物语随机任务指南.png", "desc": "公告板随机任务类型与完成技巧。", "tags": ["任务", "公告板", "随机任务"]}, {"title": "特别订单指南图", "file": "星露谷物语特别订单指南.png", "desc": "镇上特别订单与奖励配方。", "tags": ["任务", "特别订单"]}, {"title": "齐先生任务总览图", "file": "齐先生任务总览图.png", "desc": "姜岛核桃房齐先生订单与齐钻用途。", "tags": ["任务", "齐先生", "齐钻"]}];
+const ALL = [{"type": "任务", "category": "剧情任务", "title": "介绍", "text": "触发：开局自动获得 完成：与镇上 28 位居民打招呼。 奖励：熟悉居民，推进基础社交。", "tags": ["开局", "居民", "社交"]}, {"type": "任务", "category": "剧情任务", "title": "交朋友的方法", "text": "触发：完成“介绍”后 完成：给任意居民送 1 份礼物。 奖励：学会送礼系统。", "tags": ["社交", "送礼"]}, {"type": "任务", "category": "剧情任务", "title": "开始种田", "text": "触发：开局包裹 完成：种下并收获 1 个防风草。 奖励：基础耕种教学。", "tags": ["开局", "种植"]}, {"type": "任务", "category": "剧情任务", "title": "前往海滩", "text": "触发：春 2 日收到威利来信 完成：下午 5 点前去海滩找威利。 奖励：获得竹鱼竿。", "tags": ["钓鱼", "威利", "春季"]}, {"type": "任务", "category": "剧情任务", "title": "探索矿井", "text": "触发：进入矿井后 完成：到达矿井第 5 层。 奖励：开启矿井探索目标。", "tags": ["采矿", "矿井"]}, {"type": "任务", "category": "剧情任务", "title": "更深的矿井", "text": "触发：到达矿井第 5 层后 完成：到达矿井第 40 层。 奖励：进入冰层区域。", "tags": ["采矿", "矿井"]}, {"type": "任务", "category": "剧情任务", "title": "到底了吗？", "text": "触发：到达矿井第 40 层后 完成：到达矿井第 120 层。 奖励：获得骷髅钥匙。", "tags": ["采矿", "骷髅钥匙"]}, {"type": "任务", "category": "剧情任务", "title": "考古学", "text": "触发：获得可捐赠的矿物或古物后 完成：向博物馆捐赠任意 1 件物品。 奖励：开启博物馆捐赠体系。", "tags": ["博物馆", "冈瑟"]}, {"type": "任务", "category": "剧情任务", "title": "老鼠问题", "text": "触发：春 5 日后晴天进入小镇触发 完成：进入社区中心，查看工艺室的金色卷轴。 奖励：开启社区中心主线。", "tags": ["社区中心", "主线"]}, {"type": "任务", "category": "剧情任务", "title": "拜访法师", "text": "触发：看过金色卷轴后次日收到法师信 完成：去法师塔拜访法师。 奖励：学会阅读祝尼魔文字。", "tags": ["法师", "社区中心"]}, {"type": "任务", "category": "剧情任务", "title": "锻造前进", "text": "触发：获得铜矿石后次日克林特上门 完成：制作 1 个熔炉。 奖励：开启金属锭冶炼。", "tags": ["采矿", "熔炉", "克林特"]}, {"type": "任务", "category": "剧情任务", "title": "入会仪式", "text": "触发：到达矿井第 5 层后收到信 完成：击杀 10 只史莱姆，然后去探险家公会。 奖励：解锁探险家公会。", "tags": ["战斗", "史莱姆"]}, {"type": "任务", "category": "剧情任务", "title": "罗宾丢失的斧头", "text": "触发：春 11 日来信 完成：在煤矿森林下水道管道附近找到斧头，交给罗宾。 奖励：金币与罗宾好感。", "tags": ["罗宾", "春季", "找物"]}, {"type": "任务", "category": "剧情任务", "title": "镇长的“短裤”", "text": "触发：夏 3 日来信 完成：在玛妮卧室找到紫色短裤，交给刘易斯。 奖励：金币与刘易斯好感。", "tags": ["刘易斯", "玛妮", "夏季"]}, {"type": "任务", "category": "剧情任务", "title": "黑莓篮子", "text": "触发：秋 8 日来信 完成：在公交站左侧通往隧道的路边找到篮子，交给莱纳斯。 奖励：莱纳斯好感。", "tags": ["莱纳斯", "秋季", "找物"]}, {"type": "任务", "category": "剧情任务", "title": "黑暗护身符", "text": "触发：完成社区中心或 Joja 线后，铁路剧情触发 完成：去下水道找科罗布斯，再进突变虫穴拿黑暗护身符。 奖励：推进女巫沼泽线。", "tags": ["女巫", "下水道", "科罗布斯"]}, {"type": "任务", "category": "剧情任务", "title": "哥布林问题", "text": "触发：完成黑暗护身符后 完成：给女巫沼泽门口的哥布林 1 个虚空蛋黄酱，进屋拿魔法墨水交给法师。 奖励：解锁法师建筑。", "tags": ["女巫", "法师", "虚空蛋黄酱"]}, {"type": "任务", "category": "剧情任务", "title": "海盗的妻子", "text": "触发：姜岛与伯蒂对话 完成：按交换链：战争纪念物→肯特→格斯→桑迪→乔治→法师→威利→伯蒂。 奖励：仙尘配方与金核桃。", "tags": ["姜岛", "伯蒂", "交换链"]}, {"type": "任务", "category": "剧情任务", "title": "巨大树桩", "text": "触发：暴风后煤矿森林南边大树倒下 完成：交 100 个硬木修复树桩，开启浣熊任务线。 奖励：开启浣熊商店与后续请求。", "tags": ["浣熊", "硬木", "后期"]}, {"type": "任务", "category": "随机求助", "title": "物品交付", "text": "触发：皮埃尔杂货店外公告板随机刷新 完成：把指定物品拿在手上交给委托 NPC。 奖励：金币与委托人好感。", "tags": ["公告板", "交付", "2天"]}, {"type": "任务", "category": "随机求助", "title": "资源收集", "text": "触发：公告板随机刷新 完成：接任务后重新收集指定木材、石头、矿石、煤炭等。 奖励：金币与好感。", "tags": ["公告板", "资源", "2天"]}, {"type": "任务", "category": "随机求助", "title": "击杀怪物", "text": "触发：公告板随机刷新 完成：击杀指定数量的指定怪物，完成后回去找发布人。 奖励：金币与好感。", "tags": ["公告板", "战斗", "2天"]}, {"type": "任务", "category": "随机求助", "title": "钓鱼任务", "text": "触发：公告板随机刷新 完成：钓到指定数量或指定种类的鱼；多数情况下鱼可以自己保留。 奖励：金币与好感。", "tags": ["公告板", "钓鱼", "2天"]}, {"type": "任务", "category": "随机求助", "title": "打招呼 / 社交", "text": "触发：公告板随机刷新 完成：与指定数量的居民交谈。 奖励：好感提升。", "tags": ["公告板", "社交", "2天"]}, {"type": "任务", "category": "特别订单", "title": "岛屿食材", "text": "触发：姜岛解锁后，特别订单板随机出现；发布人：卡洛琳 完成：28 天内收获并出货 100 个芋头、姜或菠萝之一。 奖励：太阳能板配方。", "tags": ["特别订单", "姜岛", "28天"]}, {"type": "任务", "category": "特别订单", "title": "洞穴巡逻", "text": "触发：特别订单板；发布人：克林特 完成：7 天内击杀 50 只指定矿洞怪物。 奖励：晶球破开器配方。", "tags": ["特别订单", "战斗", "7天"]}, {"type": "任务", "category": "特别订单", "title": "水域过度繁殖", "text": "触发：特别订单板；发布人：德米特里厄斯 完成：7 天内按季节钓 10 条指定鱼。 奖励：农场电脑配方。", "tags": ["特别订单", "钓鱼", "7天"]}, {"type": "任务", "category": "特别订单", "title": "岩石复兴", "text": "触发：特别订单板；发布人：艾米丽 完成：7 天内交红宝石、黄水晶、绿宝石、翡翠、紫水晶各 1 个。 奖励：缝纫机。", "tags": ["特别订单", "宝石", "7天"]}, {"type": "任务", "category": "特别订单", "title": "给乔治的礼物", "text": "触发：春季特别订单板；发布人：艾芙琳 完成：28 天内收集 12 个韭葱，放到艾芙琳炉子上。 奖励：咖啡机。", "tags": ["特别订单", "春季", "韭葱"]}, {"type": "任务", "category": "特别订单", "title": "格斯的著名煎蛋卷", "text": "触发：特别订单板；发布人：格斯 完成：14 天内收集 24 个蛋，放进星之果实餐吧冰箱。 奖励：迷你冰箱与剧情。", "tags": ["特别订单", "蛋", "14天"]}, {"type": "任务", "category": "特别订单", "title": "作物订单", "text": "触发：非冬季特别订单板；发布人：刘易斯 完成：28 天内收获并出货 100 个指定当季作物。 奖励：迷你出货箱。", "tags": ["特别订单", "作物", "28天"]}, {"type": "任务", "category": "特别订单", "title": "社区清洁", "text": "触发：特别订单板；发布人：莱纳斯 完成：7 天内收集 20 个垃圾类物品，放到火车站箱子。 奖励：纤维种子配方。", "tags": ["特别订单", "垃圾", "7天"]}, {"type": "任务", "category": "特别订单", "title": "想要多汁虫肉！", "text": "触发：特别订单板；发布人：威利 完成：7 天内收集 100 个虫肉，放到鱼店旁箱子。 奖励：优质浮标配方。", "tags": ["特别订单", "虫肉", "钓鱼"]}, {"type": "任务", "category": "特别订单", "title": "奇怪物质", "text": "触发：特别订单板；发布人：法师 完成：7 天内击杀幽灵获得 1 个灵外质。 奖励：迷你图腾配方。", "tags": ["特别订单", "幽灵", "灵外质"]}, {"type": "任务", "category": "特别订单", "title": "五彩果冻", "text": "触发：特别订单板；发布人：法师 完成：7 天内在矿井中找到五彩史莱姆，击杀获得五彩果冻。 奖励：怪物香水配方。", "tags": ["特别订单", "法师", "五彩史莱姆"]}, {"type": "任务", "category": "齐先生订单", "title": "齐豆任务", "text": "触发：姜岛核桃房特别订单板 完成：28 天内找齐豆，种成齐瓜，并通过出货箱出货 500 个齐瓜。 奖励：100 齐钻。", "tags": ["齐先生", "齐钻", "28天"]}, {"type": "任务", "category": "齐先生订单", "title": "玩个游戏", "text": "触发：姜岛核桃房特别订单板 完成：7 天内在祝尼魔赛车无尽模式中获得 50,000 分。 奖励：20 齐钻。", "tags": ["齐先生", "小游戏", "7天"]}, {"type": "任务", "category": "齐先生订单", "title": "四颗珍贵宝石", "text": "触发：姜岛核桃房特别订单板 完成：28 天内接任务后收集 4 个五彩碎片，放进齐先生箱子。 奖励：40 齐钻。", "tags": ["齐先生", "五彩碎片", "28天"]}, {"type": "任务", "category": "齐先生订单", "title": "齐先生的饥饿挑战", "text": "触发：姜岛核桃房特别订单板 完成：7 天内不吃不喝到达骷髅洞第 100 层。 奖励：25 齐钻。", "tags": ["齐先生", "骷髅洞", "7天"]}, {"type": "任务", "category": "齐先生订单", "title": "齐先生的善意", "text": "触发：姜岛核桃房特别订单板 完成：7 天内送出 50 份居民最爱礼物。 奖励：40 齐钻。", "tags": ["齐先生", "送礼", "7天"]}, {"type": "任务", "category": "齐先生订单", "title": "扩展家庭", "text": "触发：姜岛核桃房特别订单板 完成：3 天内钓到 5 条传奇鱼二代。 奖励：20 齐钻。", "tags": ["齐先生", "传奇鱼", "3天"]}, {"type": "任务", "category": "齐先生订单", "title": "深处的危险", "text": "触发：姜岛核桃房特别订单板 完成：7 天内矿井电梯重置后重新到达矿井底层。 奖励：50 齐钻。", "tags": ["齐先生", "矿井", "7天"]}, {"type": "任务", "category": "齐先生订单", "title": "骷髅洞入侵", "text": "触发：姜岛核桃房特别订单板 完成：7 天内到达骷髅洞第 100 层。 奖励：40 齐钻。", "tags": ["齐先生", "骷髅洞", "7天"]}, {"type": "任务", "category": "齐先生订单", "title": "齐先生的五彩农场", "text": "触发：姜岛核桃房特别订单板 完成：14 天内各放入 100 个红、橙、黄、绿、蓝、紫色物品到齐先生收集箱。 奖励：35 齐钻。", "tags": ["齐先生", "颜色", "14天"]}, {"type": "任务", "category": "隐藏/后期任务", "title": "神秘的齐任务链", "text": "触发：公交隧道锁箱放入电池组 完成：电池组 → 火车站彩虹贝壳 → 刘易斯冰箱 10 甜菜 → 沙漠龙骨太阳精华 → 农舍木堆。 奖励：赌场会员卡。", "tags": ["隐藏", "赌场", "齐先生"]}, {"type": "任务", "category": "隐藏/后期任务", "title": "冬日谜团 / 放大镜", "text": "触发：冬季白天从农场去公交站 完成：跟踪黑影到小镇游乐场右侧灌木并互动。 奖励：放大镜，解锁秘密纸条。", "tags": ["隐藏", "冬季", "放大镜"]}, {"type": "任务", "category": "隐藏/后期任务", "title": "秘密纸条 #23：奇怪的纸条", "text": "触发：读到秘密纸条 #23 完成：带枫糖浆在 6:00–19:00 进入秘密森林。 奖励：熊的知识，黑莓和鲑莓售价提高。", "tags": ["秘密纸条", "秘密森林", "枫糖浆"]}, {"type": "任务", "category": "隐藏/后期任务", "title": "秘密纸条 #10：骷髅洞 100 层", "text": "触发：读到秘密纸条 #10 完成：到达骷髅洞第 100 层。 奖励：齐先生剧情与生命值奖励。", "tags": ["秘密纸条", "骷髅洞"]}, {"type": "任务", "category": "隐藏/后期任务", "title": "海盗的妻子", "text": "触发：姜岛与伯蒂对话 完成：交换链：战争纪念物→肯特→格斯→桑迪→乔治→法师→威利→伯蒂。 奖励：仙尘配方与金核桃。", "tags": ["姜岛", "伯蒂", "交换链"]}, {"type": "任务", "category": "隐藏/后期任务", "title": "巨大树桩 / 浣熊线", "text": "触发：暴风后煤矿森林南边大树倒下 完成：交 100 硬木修复树桩，之后按浣熊家庭要求交物品。 奖励：浣熊商店与后续奖励。", "tags": ["浣熊", "硬木", "后期"]}, {"type": "树木/蘑菇", "category": "树种总览", "title": "枫树", "text": "由枫树种子长成。砍伐通常掉木材、树液、枫树种子。树液采集器产出枫糖浆。", "tags": ["树木", "种子", "树液采集器", "枫糖浆"]}, {"type": "树木/蘑菇", "category": "树种总览", "title": "橡树", "text": "由橡子长成。砍伐通常掉木材、树液、橡子。树液采集器产出橡树树脂。", "tags": ["树木", "种子", "树液采集器", "橡树树脂"]}, {"type": "树木/蘑菇", "category": "树种总览", "title": "松树", "text": "由松果长成。砍伐通常掉木材、树液、松果。树液采集器产出松焦油。", "tags": ["树木", "种子", "树液采集器", "松焦油"]}, {"type": "树木/蘑菇", "category": "树种总览", "title": "桃花心木树", "text": "由桃花心木种子长成。砍伐主要掉硬木、树液、桃花心木种子。树液采集器产出树液。", "tags": ["硬木", "桃花心木", "树液"]}, {"type": "树木/蘑菇", "category": "树种总览", "title": "蘑菇树", "text": "由蘑菇树种子长成。树液采集器可产普通蘑菇、红蘑菇、紫蘑菇。", "tags": ["蘑菇树", "树液采集器", "普通蘑菇", "红蘑菇", "紫蘑菇"]}, {"type": "树木/蘑菇", "category": "树种总览", "title": "神秘树", "text": "由神秘树种长成。树液采集器可产神秘糖浆。", "tags": ["神秘树", "神秘糖浆"]}, {"type": "树木/蘑菇", "category": "树种总览", "title": "苔雨树（绿雨树）", "text": "由长满苔藓的种子长成。树液采集器可产蕨菜。", "tags": ["绿雨树", "苔雨树", "蕨菜"]}, {"type": "树木/蘑菇", "category": "蘑菇树桩规则", "title": "蘑菇树桩基础池", "text": "每 4 天收获一次（雨天可提前 1 天）：80% 普通蘑菇、15% 红蘑菇、5% 紫蘑菇。", "tags": ["蘑菇树桩", "普通蘑菇", "红蘑菇", "紫蘑菇"]}, {"type": "树木/蘑菇", "category": "蘑菇树桩规则", "title": "挨着橡树", "text": "会把羊肚菌加入产出池。", "tags": ["蘑菇树桩", "橡树", "羊肚菌"]}, {"type": "树木/蘑菇", "category": "蘑菇树桩规则", "title": "挨着松树", "text": "会把鸡油菌加入产出池。", "tags": ["蘑菇树桩", "松树", "鸡油菌"]}, {"type": "树木/蘑菇", "category": "蘑菇树桩规则", "title": "挨着神秘树", "text": "会提高紫蘑菇的出现权重。", "tags": ["蘑菇树桩", "神秘树", "紫蘑菇"]}, {"type": "树木/蘑菇", "category": "蘑菇树桩规则", "title": "挨着枫树", "text": "会提高红蘑菇的出现权重。", "tags": ["蘑菇树桩", "枫树", "红蘑菇"]}, {"type": "树木/蘑菇", "category": "蘑菇树桩规则", "title": "挨着其他树（如桃花心木、苔雨树）", "text": "无特定加成，仍使用基础概率池。", "tags": ["蘑菇树桩", "桃花心木", "苔雨树"]}, {"type": "长图图鉴", "category": "图鉴", "title": "树木采集与蘑菇树桩总览", "text": "包含：可由种子种出的树、树液采集器产物、蘑菇树桩受周围树木影响的产物规则。", "tags": ["树", "种子", "树液采集器", "蘑菇树桩"], "file": "星露谷物语_树木采集与蘑菇树桩汇总.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "制作物综合图鉴", "text": "制作物大类总览，适合作为入口图。", "tags": ["制作物", "综合", "图纸", "配方"], "file": "星露谷物语_1.6制作指南.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "工匠加工设备制作图鉴", "text": "聚焦工匠加工类机器与用途。", "tags": ["制作物", "工匠", "机器", "设备"], "file": "工匠加工设备制作图鉴.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "资源设备图鉴", "text": "聚焦资源型设备与功能说明。", "tags": ["制作物", "资源", "设备"], "file": "星露谷物语_资源设备图鉴.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "装饰与照明图鉴", "text": "装饰、照明与环境布置类。", "tags": ["制作物", "装饰", "照明"], "file": "星露谷物语装饰与照明图鉴.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "战斗与矿洞指南（制作物相关）", "text": "战斗与矿洞相关制作物、用途与搭配。", "tags": ["制作物", "战斗", "矿洞"], "file": "星露谷物语战斗与矿洞指南.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "存储与自动化图鉴", "text": "存储、自动化、搬运与辅助类型制作物。", "tags": ["制作物", "存储", "自动化"], "file": "存储与自动化图鉴帮助.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "伐木与树木掉落总览", "text": "砍伐什么树会掉什么、树在哪里找、特殊树木与资源说明。", "tags": ["伐木", "树木", "掉落", "位置"], "file": "星露谷物语_1.6_伐木指南.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "采矿全资料总览", "text": "矿区层数、矿石与宝石、晶球地晶、工具升级与冶炼速查。", "tags": ["采矿", "矿石", "宝石", "晶球"], "file": "星露谷采矿全资料指南.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "钓鱼全资料总览", "text": "地点时间、四季鱼类、传奇鱼、鱼饵与浮标、蟹笼。", "tags": ["钓鱼", "季节鱼", "传奇鱼", "鱼饵", "浮标"], "file": "星露谷物语钓鱼全攻略.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "种植全资料总览", "text": "四季作物、特殊种植、果树、肥料与实用建议。", "tags": ["种植", "作物", "果树", "肥料"], "file": "星露谷物语作物全览图.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "怪物与掉落总览", "text": "矿井、骷髅洞、火山和地表怪物掉落与地点。", "tags": ["怪物", "掉落", "矿井", "骷髅洞", "火山"], "file": "星露谷物语怪物与掉落地图.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "剧情任务总览图", "text": "主线剧情任务与常见居民任务图解。", "tags": ["任务", "剧情"], "file": "星露谷物语任务总览解析.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "随机任务指南图", "text": "公告板随机任务类型与完成技巧。", "tags": ["任务", "公告板", "随机任务"], "file": "星露谷物语随机任务指南.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "特别订单指南图", "text": "镇上特别订单与奖励配方。", "tags": ["任务", "特别订单"], "file": "星露谷物语特别订单指南.png"}, {"type": "长图图鉴", "category": "图鉴", "title": "齐先生任务总览图", "text": "姜岛核桃房齐先生订单与齐钻用途。", "tags": ["任务", "齐先生", "齐钻"], "file": "齐先生任务总览图.png"}];
+
+const topTypes = ["全部","任务库","树木 / 蘑菇","长图图鉴"];
+const subMap = {
+  "全部":["全部"],
+  "任务库":["全部","剧情任务","随机求助","特别订单","齐先生订单","隐藏/后期任务"],
+  "树木 / 蘑菇":["全部","树种总览","蘑菇树桩规则"],
+  "长图图鉴":["全部","图鉴"]
+};
+
+let currentType = "全部";
+let currentSub = "全部";
+
 const tabsEl = document.getElementById("tabs");
-const listEl = document.getElementById("list");
+const subtabsEl = document.getElementById("subtabs");
+const qEl = document.getElementById("q");
+const contentEl = document.getElementById("content");
 const countEl = document.getElementById("count");
-function normalize(s){return String(s||"").toLowerCase().trim()}
-function matchTask(t,q){if(!q)return true;const hay=[t.cat,t.name,t.trigger,t.how,t.reward,(t.tags||[]).join(" ")].join(" ").toLowerCase();return hay.includes(q.toLowerCase())}
-function escapeHtml(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[c]))}
-function highlight(s,q){s=escapeHtml(s);if(!q)return s;const safe=q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");if(!safe)return s;return s.replace(new RegExp(safe,"ig"),m=>`<mark>${m}</mark>`)}
-function iconFor(cat){return {"剧情任务":"📘","随机求助":"📮","特别订单":"📌","齐先生订单":"💎","隐藏/后期任务":"🗝️"}[cat]||"📜"}
-function renderTabs(){tabsEl.innerHTML=CATEGORIES.map(c=>`<button class="tab ${c===currentCat?'active':''}" onclick="setCat('${c}')">${iconFor(c)} ${c}</button>`).join("")}
-function setCat(c){currentCat=c;render();window.scrollTo({top:0,behavior:"smooth"})}
-function clearSearch(){qEl.value="";render()}
-function render(){renderTabs();const q=normalize(qEl.value);const filtered=TASKS.filter(t=>(currentCat==="全部"||t.cat===currentCat)&&matchTask(t,q));countEl.textContent=filtered.length;if(!filtered.length){listEl.innerHTML='<div class="empty">没有找到匹配任务。换个关键词试试：NPC名、物品名、地点名都可以。</div>';return}const groups=CATEGORIES.filter(c=>c!=="全部").map(cat=>[cat,filtered.filter(t=>t.cat===cat)]).filter(g=>g[1].length);listEl.innerHTML=groups.map(([cat,items])=>`<h2 class="section-title">${iconFor(cat)} ${cat} <span style="font-size:14px;opacity:.9;">${items.length} 条</span></h2><div class="grid">${items.map(t=>`<article class="card"><div class="card-head"><div class="name">${highlight(t.name,q)}</div><div class="cat">${t.cat}</div></div><div class="row"><div class="label">触发</div><div class="value">${highlight(t.trigger,q)}</div></div><div class="row"><div class="label">完成</div><div class="value">${highlight(t.how,q)}</div></div><div class="row"><div class="label">奖励</div><div class="value">${highlight(t.reward,q)}</div></div><div class="tags">${(t.tags||[]).map(tag=>`<span class="tag">#${highlight(tag,q)}</span>`).join("")}</div></article>`).join("")}</div>`).join("")}
-qEl.addEventListener("input",render);render();
+
+function esc(s) {
+  return String(s || "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[ch]));
+}
+function highlight(s, q) {
+  s = esc(s);
+  if (!q) return s;
+  const safe = q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  if (!safe) return s;
+  return s.replace(new RegExp(safe, "ig"), m => `<mark>${m}</mark>`);
+}
+function normalize(s) { return String(s || "").toLowerCase().trim(); }
+function iconFor(type) {
+  return {
+    "全部":"🌟","任务库":"📘","树木 / 蘑菇":"🌲","长图图鉴":"🖼️",
+    "剧情任务":"📘","随机求助":"📮","特别订单":"📌","齐先生订单":"💎","隐藏/后期任务":"🗝️",
+    "树种总览":"🌳","蘑菇树桩规则":"🍄","图鉴":"🖼️"
+  }[type] || "📚";
+}
+
+function match(item, q) {
+  if (!q) return true;
+  const hay = [item.type,item.category,item.title,item.text,(item.tags||[]).join(" ")].join(" ").toLowerCase();
+  return hay.includes(q);
+}
+
+function setType(t) {
+  currentType = t;
+  currentSub = "全部";
+  render();
+  scrollToTop();
+}
+function setSub(s) {
+  currentSub = s;
+  render();
+}
+function clearSearch() {
+  qEl.value = "";
+  render();
+}
+function scrollToTop() {
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderTabs() {
+  tabsEl.innerHTML = topTypes.map(t => `<button class="tab ${t===currentType?'active':''}" onclick="setType('${t}')">${iconFor(t)} ${t}</button>`).join("");
+  const subs = subMap[currentType] || ["全部"];
+  subtabsEl.innerHTML = subs.map(s => `<button class="subtab ${s===currentSub?'active':''}" onclick="setSub('${s}')">${iconFor(s)} ${s}</button>`).join("");
+}
+
+function getFilteredData() {
+  const q = normalize(qEl.value);
+
+  const items = ALL.filter(item => {
+    const topOk = currentType === "全部"
+      || (currentType === "任务库" && item.type === "任务")
+      || (currentType === "树木 / 蘑菇" && item.type === "树木/蘑菇")
+      || (currentType === "长图图鉴" && item.type === "长图图鉴");
+
+    const subOk = currentSub === "全部" || item.category === currentSub;
+    const qOk = match(item, q);
+    return topOk && subOk && qOk;
+  });
+
+  return items;
+}
+
+function renderCards(items, q) {
+  return `
+    <div class="grid">
+      ${items.map(item => `
+        <article class="card">
+          <div class="head">
+            <div class="title">${highlight(item.title, q)}</div>
+            <div class="pill">${item.category}</div>
+          </div>
+          <div class="row"><div class="label">类型</div><div class="value">${item.type}</div></div>
+          <div class="row"><div class="label">内容</div><div class="value">${highlight(item.text, q)}</div></div>
+          <div class="tags">${(item.tags||[]).map(tag => `<span class="tag">#${highlight(tag, q)}</span>`).join("")}</div>
+        </article>
+      `).join("")}
+    </div>`;
+}
+
+function renderGuides(q) {
+  const filtered = GUIDES.filter(g => {
+    const hay = [g.title,g.desc,(g.tags||[]).join(" ")].join(" ").toLowerCase();
+    return (!q || hay.includes(q)) && (currentSub === "全部" || currentSub === "图鉴");
+  });
+  if (!filtered.length) return `<div class="empty">没有找到匹配的长图图鉴。</div>`;
+  return `
+    <h2 class="section-title">🖼️ 长图图鉴</h2>
+    <div class="gallery">
+      ${filtered.map(g => `
+        <article class="gcard">
+          <a class="thumb-wrap" href="assets/${encodeURI(g.file)}" target="_blank">
+            <img class="thumb" src="assets/${encodeURI(g.file)}" alt="${esc(g.title)}" loading="lazy" />
+          </a>
+          <div class="gbody">
+            <div class="gtitle">${highlight(g.title, q)}</div>
+            <div class="gdesc">${highlight(g.desc, q)}</div>
+            <div class="tags">${(g.tags||[]).map(tag => `<span class="tag">#${highlight(tag, q)}</span>`).join("")}</div>
+            <div class="actions">
+              <a class="btn" href="assets/${encodeURI(g.file)}" target="_blank">查看原图</a>
+            </div>
+          </div>
+        </article>
+      `).join("")}
+    </div>`;
+}
+
+function render() {
+  renderTabs();
+  const q = normalize(qEl.value);
+  const items = getFilteredData();
+  countEl.textContent = items.length;
+
+  if (!items.length) {
+    contentEl.innerHTML = `<div class="empty">没有找到匹配内容。试试搜索 NPC、地点、物品或图鉴名。</div>`;
+    return;
+  }
+
+  if (currentType === "长图图鉴") {
+    contentEl.innerHTML = renderGuides(q);
+    return;
+  }
+
+  const grouped = {};
+  items.forEach(item => {
+    grouped[item.category] ||= [];
+    grouped[item.category].push(item);
+  });
+
+  contentEl.innerHTML = Object.entries(grouped).map(([k,v]) => `
+      <h2 class="section-title">${iconFor(k)} ${k} <span style="font-size:14px;opacity:.9;">${v.length} 条</span></h2>
+      ${renderCards(v, q)}
+    `).join("") + (GUIDES.some(g => {
+      const hay = [g.title,g.desc,(g.tags||[]).join(" ")].join(" ").toLowerCase();
+      return q ? hay.includes(q) : false;
+    }) ? renderGuides(q) : "");
+}
+
+qEl.addEventListener("input", render);
+render();
 </script>
 </body>
 </html>
